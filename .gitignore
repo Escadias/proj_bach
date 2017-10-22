@@ -3,6 +3,9 @@
 **/bazel-genfiles
 **/bazel-out
 **/bazel-im2txt
+**/bazel-im2txt_LSTM
+**/bazel-im2txt_GRU
+**/bazel-im2txt_Sigmoid
 **/bazel-testlogs
 **/bazel-tf
 data/
@@ -10,3 +13,4 @@ data/**
 python_virtual_env/
 python_virtual_env/**
 **/model/**
+**/output/**
