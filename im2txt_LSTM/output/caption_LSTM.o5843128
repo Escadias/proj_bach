@@ -1,0 +1,36 @@
+1
+.
+WARNING: Sandboxed execution is not supported on your system and thus hermeticity of actions cannot be guaranteed. See http://bazel.build/docs/bazel-user-manual.html#sandboxing for more information. You can turn off this warning via --ignore_unsupported_sandboxing.
+____Loading package: im2txt/ops
+____Loading package: @bazel_tools//tools/cpp
+____Loading package: @bazel_tools//tools/jdk
+____Loading package: @local_config_xcode//
+____Loading package: @local_jdk//
+____Loading package: @local_config_cc//
+____Loading complete.  Analyzing...
+____Loading package: tools/defaults
+____Loading package: @bazel_tools//tools/test
+____Loading package: @bazel_tools//tools/python
+____Loading package: @bazel_tools//tools/coverage
+____Found 17 targets...
+____Building...
+____[0 / 2] BazelWorkspaceStatusAction stable-status.txt
+____[4 / 23] Expanding template im2txt/train
+____[7 / 24] Creating source manifest for //im2txt:run_inference
+____Elapsed time: 9.220s, Critical Path: 0.33s
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+Traceback (most recent call last):
+  File "/home/sallinf0/proj_bach/im2txt_LSTM/bazel-bin/im2txt/run_inference.runfiles/im2txt/im2txt/run_inference.py", line 25, in <module>
+    import tensorflow as tf
+  File "/opt/ebsofts/MPI/GCC/4.9.3-2.25/OpenMPI/1.10.2/tensorflow/1.0.1-Python-2.7.11/lib/python2.7/site-packages/tensorflow/__init__.py", line 24, in <module>
+    from tensorflow.python import *
+  File "/opt/ebsofts/MPI/GCC/4.9.3-2.25/OpenMPI/1.10.2/tensorflow/1.0.1-Python-2.7.11/lib/python2.7/site-packages/tensorflow/python/__init__.py", line 75, in <module>
+    from tensorflow.core.framework.graph_pb2 import *
+  File "/opt/ebsofts/MPI/GCC/4.9.3-2.25/OpenMPI/1.10.2/tensorflow/1.0.1-Python-2.7.11/lib/python2.7/site-packages/tensorflow/core/framework/graph_pb2.py", line 6, in <module>
+    from google.protobuf import descriptor as _descriptor
+ImportError: No module named google.protobuf
+srun: error: gpu002: task 0: Exited with exit code 1

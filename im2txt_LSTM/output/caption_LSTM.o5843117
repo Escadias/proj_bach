@@ -1,0 +1,18 @@
+0
+.
+WARNING: Sandboxed execution is not supported on your system and thus hermeticity of actions cannot be guaranteed. See http://bazel.build/docs/bazel-user-manual.html#sandboxing for more information. You can turn off this warning via --ignore_unsupported_sandboxing.
+____Loading package: im2txt/ops
+ERROR: /home/sallinf0/proj_bach/im2txt_LSTM/im2txt/BUILD:21:1: //im2txt:download_and_preprocess_mscoco: invalid label '$HOME/proj_bach/data/download_and_preprocess_mscoco.sh' in element 0 of attribute 'srcs' in 'sh_binary' rule: invalid target name '$HOME/proj_bach/data/download_and_preprocess_mscoco.sh': target names may not contain '$'.
+ERROR: /home/sallinf0/proj_bach/im2txt_LSTM/im2txt/BUILD:21:1: //im2txt:download_and_preprocess_mscoco: missing value for mandatory attribute 'srcs' in 'sh_binary' rule.
+ERROR: package contains errors: im2txt.
+ERROR: error loading package 'im2txt': Package 'im2txt' contains errors.
+____Elapsed time: 2.437s
+Traceback (most recent call last):
+  File "bazel-bin/im2txt/run_inference", line 142, in <module>
+    Main()
+  File "bazel-bin/im2txt/run_inference", line 92, in Main
+    module_space = FindModuleSpace()
+  File "bazel-bin/im2txt/run_inference", line 73, in FindModuleSpace
+    sys.argv[0])
+AssertionError: Cannot find .runfiles directory for bazel-bin/im2txt/run_inference
+srun: error: gpu002: task 0: Exited with exit code 1

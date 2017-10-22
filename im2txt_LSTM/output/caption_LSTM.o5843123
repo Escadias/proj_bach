@@ -1,0 +1,31 @@
+0
+.
+WARNING: Sandboxed execution is not supported on your system and thus hermeticity of actions cannot be guaranteed. See http://bazel.build/docs/bazel-user-manual.html#sandboxing for more information. You can turn off this warning via --ignore_unsupported_sandboxing.
+____Loading package: im2txt/ops
+____Loading package: @bazel_tools//tools/cpp
+____Loading package: @bazel_tools//tools/jdk
+____Loading package: @local_config_xcode//
+____Loading package: @local_jdk//
+____Loading package: @local_config_cc//
+____Loading complete.  Analyzing...
+____Loading package: tools/defaults
+____Loading package: @bazel_tools//tools/zip
+____Loading package: @bazel_tools//tools/python
+____Loading package: @bazel_tools//tools/coverage
+____Found 17 targets...
+____Building...
+____[0 / 2] BazelWorkspaceStatusAction stable-status.txt
+ERROR: missing input file '//im2txt:data/download_and_preprocess_mscoco.sh'.
+ERROR: /home/sallinf0/proj_bach/im2txt_LSTM/im2txt/BUILD:21:1: //im2txt:download_and_preprocess_mscoco: missing input file '//im2txt:data/download_and_preprocess_mscoco.sh'.
+____Building complete.
+ERROR: /home/sallinf0/proj_bach/im2txt_LSTM/im2txt/BUILD:21:1 1 input file(s) do not exist.
+____Elapsed time: 8.627s, Critical Path: 0.14s
+Traceback (most recent call last):
+  File "bazel-bin/im2txt/run_inference", line 142, in <module>
+    Main()
+  File "bazel-bin/im2txt/run_inference", line 92, in Main
+    module_space = FindModuleSpace()
+  File "bazel-bin/im2txt/run_inference", line 73, in FindModuleSpace
+    sys.argv[0])
+AssertionError: Cannot find .runfiles directory for bazel-bin/im2txt/run_inference
+srun: error: gpu002: task 0: Exited with exit code 1
