@@ -244,22 +244,22 @@ class ShowAndTellModel(object):
     # This LSTM cell has biases and outputs tanh(new_c) * sigmoid(o), but the
     # modified LSTM in the "Show and Tell" paper has no biases and outputs
     # new_c * sigmoid(o).
-    lstm_cell = tf.contrib.rnn.GRUCell( #lstm_cell = tf.contrib.rnn.BasicLSTMCell(
-        num_units=self.config.num_lstm_units, state_is_tuple=True)
+    gru_cell = tf.contrib.rnn.GRUCell( #lstm_cell = tf.contrib.rnn.BasicLSTMCell(
+        num_units=self.config.num_lstm_units )
     if self.mode == "train":
-      lstm_cell = tf.contrib.rnn.DropoutWrapper(
-          lstm_cell,
+      gru_cell = tf.contrib.rnn.DropoutWrapper(
+          gru_cell,
           input_keep_prob=self.config.lstm_dropout_keep_prob,
           output_keep_prob=self.config.lstm_dropout_keep_prob)
 
-    with tf.variable_scope("lstm", initializer=self.initializer) as lstm_scope:
+    with tf.variable_scope("gru", initializer=self.initializer) as gru_scope:
       # Feed the image embeddings to set the initial LSTM state.
-      zero_state = lstm_cell.zero_state(
+      zero_state = gru_cell.zero_state(
           batch_size=self.image_embeddings.get_shape()[0], dtype=tf.float32)
-      _, initial_state = lstm_cell(self.image_embeddings, zero_state)
+      _, initial_state = gru_cell(self.image_embeddings, zero_state)
 
       # Allow the LSTM variables to be reused.
-      lstm_scope.reuse_variables()
+      gru_scope.reuse_variables()
 
       if self.mode == "inference":
         # In inference mode, use concatenated states for convenient feeding and
@@ -268,12 +268,12 @@ class ShowAndTellModel(object):
 
         # Placeholder for feeding a batch of concatenated states.
         state_feed = tf.placeholder(dtype=tf.float32,
-                                    shape=[None, sum(lstm_cell.state_size)],
+                                    shape=[None, (gru_cell.state_size)],
                                     name="state_feed")
         state_tuple = tf.split(value=state_feed, num_or_size_splits=2, axis=1)
 
         # Run a single LSTM step.
-        lstm_outputs, state_tuple = lstm_cell(
+        gru_outputs, state_tuple = gru_cell(
             inputs=tf.squeeze(self.seq_embeddings, axis=[1]),
             state=state_tuple)
 
@@ -282,19 +282,19 @@ class ShowAndTellModel(object):
       else:
         # Run the batch of sequence embeddings through the LSTM.
         sequence_length = tf.reduce_sum(self.input_mask, 1)
-        lstm_outputs, _ = tf.nn.dynamic_rnn(cell=lstm_cell,
+        gru_outputs, _ = tf.nn.dynamic_rnn(cell=gru_cell,
                                             inputs=self.seq_embeddings,
                                             sequence_length=sequence_length,
                                             initial_state=initial_state,
                                             dtype=tf.float32,
-                                            scope=lstm_scope)
+                                            scope=gru_scope)
 
     # Stack batches vertically.
-    lstm_outputs = tf.reshape(lstm_outputs, [-1, lstm_cell.output_size])
+    gru_outputs = tf.reshape(gru_outputs, [-1, gru_cell.output_size])
 
     with tf.variable_scope("logits") as logits_scope:
       logits = tf.contrib.layers.fully_connected(
-          inputs=lstm_outputs,
+          inputs=gru_outputs,
           num_outputs=self.config.vocab_size,
           activation_fn=None,
           weights_initializer=self.initializer,
