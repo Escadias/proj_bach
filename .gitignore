@@ -8,11 +8,8 @@
 **/bazel-im2txt_Sigmoid
 **/bazel-testlogs
 **/bazel-tf
-data/
-data/**
+/data
 python_virtual_env/
-python_virtual_env/**
 **/model/**
 **/output/**
 .vscode/
-.vscode/**
