@@ -4,7 +4,7 @@
 #SBATCH -o output/train_model_GRU.o%j
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --gres=gpu:titan:2
 #SBATCH --mem=24GB
 
@@ -23,8 +23,8 @@ cd im2txt_GRU
 srun bazel-bin/im2txt/train \
   --input_file_pattern=$HOME/proj_bach/data/mscoco/train-?????-of-00256 \
   --inception_checkpoint_file=$HOME/proj_bach/data/inception_v3.ckpt \
-  --train_dir=im2txt/model/train_24h \
+  --train_dir=im2txt/model/train_12h \
   --train_inception=false \
-  --number_of_steps=230000
+  --number_of_steps=118000
 
 module purge

@@ -25,6 +25,6 @@ srun bazel-bin/im2txt/train \
   --inception_checkpoint_file=$HOME/proj_bach/data/inception_v3.ckpt \
   --train_dir=im2txt/model/train_12h \
   --train_inception=false \
-  --number_of_steps=120000
+  --number_of_steps=118000
 
 module purge
