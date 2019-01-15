@@ -5,8 +5,8 @@
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
 #SBATCH --time=12:00:00
-#SBATCH --gres=gpu:titan:2
-#SBATCH --mem=24GB
+#SBATCH --gres=gpu:titan:4
+#SBATCH --mem=48GB
 
 module purge
 module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92 cuDNN/5.1-CUDA-8.0.44 tensorflow/1.3.0-Python-2.7.11
