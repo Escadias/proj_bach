@@ -9,7 +9,7 @@
 #SBATCH --mem=12GB
 
 module purge
-module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92 CUDA cuDNN tensorflow/1.0.1-Python-2.7.11
+module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92 cuDNN/5.1-CUDA-8.0.44 tensorflow/1.3.0-Python-2.7.11
 
 # if you need to know the allocated CUDA device, you can obtain it here:
 echo $CUDA_VISIBLE_DEVICES
