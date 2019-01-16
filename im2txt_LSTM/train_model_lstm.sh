@@ -5,8 +5,8 @@
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
 #SBATCH --time=12:00:00
-#SBATCH --gres=gpu:titan:4
-#SBATCH --mem=48GB
+#SBATCH --gres=gpu:titan:2
+#SBATCH --mem=24GB
 
 module purge
 module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92 cuDNN/5.1-CUDA-8.0.44 tensorflow/1.3.0-Python-2.7.11
@@ -25,6 +25,6 @@ srun bazel-bin/im2txt/train \
   --inception_checkpoint_file=$HOME/proj_bach/data/inception_v3.ckpt \
   --train_dir=im2txt/model/train_12h \
   --train_inception=false \
-  --number_of_steps=118000
+  --number_of_steps=100000
 
 module purge
