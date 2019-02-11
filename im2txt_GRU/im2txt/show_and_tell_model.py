@@ -258,7 +258,7 @@ class ShowAndTellModel(object):
           batch_size=self.image_embeddings.get_shape()[0], dtype=tf.float32)
       _, initial_state = gru_cell(self.image_embeddings, zero_state)
 
-      # Allow the LSTM variables to be reused.
+      # Allow the GRU variables to be reused.
       gru_scope.reuse_variables()
 
       if self.mode == "inference":
@@ -280,7 +280,7 @@ class ShowAndTellModel(object):
         print(state_tuple)
         print()
         print()
-        # Run a single LSTM step.
+        # Run a single GRU step.
         gru_outputs, state_tuple = gru_cell(
             inputs=tf.squeeze(self.seq_embeddings, axis=[1]),
             state=state_tuple)
