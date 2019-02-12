@@ -18,7 +18,7 @@ cd ~/proj_bach/
 source python_virtual_env/bin/activate
 cd im2txt_GRU/
 
-/opt/bazel/bazel-0.4.4/bazel build -c opt //im2txt/...
+/opt/bazel/bazel-0.4.4/bazel build -c opt //im2txt:run_inference
 
 srun bazel-bin/im2txt/run_inference \
 	--checkpoint_path=im2txt/model/train_12h \
