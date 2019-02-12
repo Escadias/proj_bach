@@ -4,7 +4,7 @@
 #SBATCH -o output/caption_GRU.o%j
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
-#SBATCH --time=00:03:00
+#SBATCH --time=00:01:10
 #SBATCH --gres=gpu:titan:1
 #SBATCH --mem=12GB
 
