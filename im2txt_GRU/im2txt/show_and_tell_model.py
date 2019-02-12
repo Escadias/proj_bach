@@ -265,11 +265,11 @@ class ShowAndTellModel(object):
         # In inference mode, use concatenated states for convenient feeding and
         # fetching.
         tf.concat(axis=1, values=initial_state, name="initial_state")
-        print()
+        """ print()
         print()
         print(gru_cell.state_size)
         print()
-        print()
+        print() """
         # Placeholder for feeding a batch of concatenated states.
         state_feed = tf.placeholder(dtype=tf.float32,
                                     shape=[None, gru_cell.state_size],
