@@ -253,7 +253,7 @@ class ShowAndTellModel(object):
           output_keep_prob=self.config.gru_dropout_keep_prob)
 
     with tf.variable_scope("gru", initializer=self.initializer) as gru_scope:
-      # Feed the image embeddings to set the initial LSTM state.
+      # Feed the image embeddings to set the initial GRU state.
       zero_state = gru_cell.zero_state(
           batch_size=self.image_embeddings.get_shape()[0], dtype=tf.float32)
       _, initial_state = gru_cell(self.image_embeddings, zero_state)
@@ -274,16 +274,16 @@ class ShowAndTellModel(object):
         state_feed = tf.placeholder(dtype=tf.float32,
                                     shape=[None, gru_cell.state_size],
                                     name="state_feed")
-        state_tuple = tf.split(value=state_feed, num_or_size_splits=2, axis=1)
-        print()
+        #state_tuple = tf.split(value=state_feed, num_or_size_splits=2, axis=1)
+        """ print()
         print()
         print(state_tuple)
         print()
-        print()
+        print() """
         # Run a single GRU step.
         gru_outputs, state_tuple = gru_cell(
             inputs=tf.squeeze(self.seq_embeddings, axis=[1]),
-            state=state_tuple)
+            state=state_feed)
 
         # Concatentate the resulting state.
         tf.concat(axis=1, values=state_tuple, name="state")

@@ -70,11 +70,11 @@ class ModelConfig(object):
     # Scale used to initialize model variables.
     self.initializer_scale = 0.08
 
-    # LSTM input and output dimensionality, respectively.
+    # GRU input and output dimensionality, respectively.
     self.embedding_size = 512
     self.num_gru_units = 512
 
-    # If < 1.0, the dropout keep probability applied to LSTM variables.
+    # If < 1.0, the dropout keep probability applied to GRU variables.
     self.gru_dropout_keep_prob = 0.7
 
 
