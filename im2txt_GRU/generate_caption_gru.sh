@@ -23,7 +23,7 @@ cd im2txt_GRU/
 srun bazel-bin/im2txt/run_inference \
 	--checkpoint_path=im2txt/model/train_12h \
 	--vocab_file=$HOME/proj_bach/data/mscoco/word_counts.txt \
-	--input_files=$HOME/proj_bach/data/chien.jpg
+	--input_files=$HOME/proj_bach/data/achien.jpg
 	#--input_files=im2txt/data/mscoco/raw-data/val2014/COCO_val2014_000000224477.jpg
 
 module purge
