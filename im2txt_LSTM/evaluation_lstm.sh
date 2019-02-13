@@ -22,7 +22,9 @@ cd im2txt_LSTM
 
 # Run the evaluation script. This will run in a loop, periodically loading the
 # latest model checkpoint file and computing evaluation metrics.
-bazel-bin/im2txt/evaluate \
+srun bazel-bin/im2txt/evaluate \
   --input_file_pattern=$HOME/proj_bach/data/mscoco/val-?????-of-00004 \
   --checkpoint_dir=im2txt/model/train_12h \
   --eval_dir=im2txt/model/eval_12h
+
+module purge
