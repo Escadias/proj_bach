@@ -14,7 +14,7 @@ module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92
 # if you need to know the allocated CUDA device, you can obtain it here:
 echo $CUDA_VISIBLE_DEVICES
 
-cd $PROJ_BACH
+cd ~/proj_bach/
 source python_virtual_env/bin/activate
 cd im2txt_LSTM
 
@@ -24,5 +24,5 @@ cd im2txt_LSTM
 # latest model checkpoint file and computing evaluation metrics.
 bazel-bin/im2txt/evaluate \
   --input_file_pattern=$HOME/proj_bach/data/mscoco/val-?????-of-00004 \
-  --checkpoint_dir=$HOME/proj_bach/im2txt_LSTM/im2txt/model/train_12h \
-  --eval_dir=$HOME/proj_bach/im2txt_LSTM/im2txt/model/eval_12h
+  --checkpoint_dir=im2txt/model/train_12h \
+  --eval_dir=im2txt/model/eval_12h
