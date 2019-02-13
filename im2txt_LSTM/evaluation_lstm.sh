@@ -14,7 +14,7 @@ module load GCC/4.9.3-2.25 OpenMPI/1.10.2 Python/2.7.11 foss/2016a Java/1.8.0_92
 # if you need to know the allocated CUDA device, you can obtain it here:
 echo $CUDA_VISIBLE_DEVICES
 
-PROJ_BACH = "~/proj_bach/"
+PROJ_BACH="~/proj_bach"
 MSCOCO_DIR="${PROJ_BACH}/data/mscoco"
 MODEL_DIR="${PROJ_BACH}/im2txt_LSTM/im2txt/model"
 
