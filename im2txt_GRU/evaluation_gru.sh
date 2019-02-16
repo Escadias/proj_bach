@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH -J evaluation_LSTM
-#SBATCH -o output/evaluation_LSTM.o%j
+#SBATCH -J evaluation_GRU
+#SBATCH -o output/evaluation_GRU.o%j
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
 #SBATCH --time=00:05:00
@@ -16,7 +16,7 @@ echo $CUDA_VISIBLE_DEVICES
 
 cd ~/proj_bach/
 source python_virtual_env/bin/activate
-cd im2txt_LSTM
+cd im2txt_GRU
 
 /opt/bazel/bazel-0.4.4/bazel build -c opt //im2txt/evaluate
 

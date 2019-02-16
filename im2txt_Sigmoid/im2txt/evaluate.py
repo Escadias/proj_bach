@@ -177,14 +177,14 @@ def run():
     g.finalize()
 
     # Run a new evaluation run every eval_interval_secs.
-    while True:
-      start = time.time()
-      tf.logging.info("Starting evaluation at " + time.strftime(
-          "%Y-%m-%d-%H:%M:%S", time.localtime()))
-      run_once(model, saver, summary_writer, summary_op)
-      time_to_next_eval = start + FLAGS.eval_interval_secs - time.time()
-      if time_to_next_eval > 0:
-        time.sleep(time_to_next_eval)
+    #while True:
+    start = time.time()
+    tf.logging.info("Starting evaluation at " + time.strftime(
+        "%Y-%m-%d-%H:%M:%S", time.localtime()))
+    run_once(model, saver, summary_writer, summary_op)
+    time_to_next_eval = start + FLAGS.eval_interval_secs - time.time()
+    if time_to_next_eval > 0:
+      time.sleep(time_to_next_eval)
 
 
 def main(unused_argv):
