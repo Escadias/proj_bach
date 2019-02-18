@@ -4,7 +4,7 @@
 #SBATCH -o output/train_model_Sigmoid_test.o%j
 #SBATCH --constraint="V5|V6"
 #SBATCH --partition=shared-gpu
-#SBATCH --time=5:00:00
+#SBATCH --time=00:05:00
 #SBATCH --gres=gpu:titan:2
 #SBATCH --mem=24GB
 
