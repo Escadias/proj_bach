@@ -22,7 +22,7 @@ Subclasses must implement the following methods:
   feed_image():
     Takes an encoded image and returns the initial model state, where "state"
     is a numpy array whose specifics are defined by the subclass, e.g.
-    concatenated LSTM state. It's assumed that feed_image() will be called
+    concatenated RNN state. It's assumed that feed_image() will be called
     precisely once at the start of inference for each image. Subclasses may
     compute and/or save per-image internal context in this method.
 

@@ -70,11 +70,11 @@ class ModelConfig(object):
     # Scale used to initialize model variables.
     self.initializer_scale = 0.08
 
-    # LSTM input and output dimensionality, respectively.
+    # RNN input and output dimensionality, respectively.
     self.embedding_size = 512
     self.num_rnn_units = 512
 
-    # If < 1.0, the dropout keep probability applied to LSTM variables.
+    # If < 1.0, the dropout keep probability applied to RNN variables.
     self.rnn_dropout_keep_prob = 0.7
 
 

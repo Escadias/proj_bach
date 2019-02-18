@@ -18,7 +18,7 @@ cd ~/proj_bach/
 source python_virtual_env/bin/activate
 cd im2txt_GRU
 
-/opt/bazel/bazel-0.4.4/bazel build -c opt //im2txt/evaluate
+/opt/bazel/bazel-0.4.4/bazel build -c opt //im2txt/...
 
 # Run the evaluation script. This will run in a loop, periodically loading the
 # latest model checkpoint file and computing evaluation metrics.

@@ -5,7 +5,7 @@ MODEL_DIR="${HOME}/proj_bach/im2txt_GRU/im2txt/model"
 # constrained, for example, by running the training script).
 #export CUDA_VISIBLE_DEVICES=""
 
-bazel build -c opt //im2txt:evaluate
+bazel build -c opt //im2txt/...
 
 
 # Run the evaluation script. This will run in a loop, periodically loading the

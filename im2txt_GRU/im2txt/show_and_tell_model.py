@@ -265,21 +265,13 @@ class ShowAndTellModel(object):
         # In inference mode, use concatenated states for convenient feeding and
         # fetching.
         tf.concat(axis=1, values=initial_state, name="initial_state")
-        """ print()
-        print()
-        print(gru_cell.state_size)
-        print()
-        print() """
+        
         # Placeholder for feeding a batch of concatenated states.
         state_feed = tf.placeholder(dtype=tf.float32,
                                     shape=[None, gru_cell.state_size],
                                     name="state_feed")
         #state_tuple = tf.split(value=state_feed, num_or_size_splits=2, axis=1)
-        """ print()
-        print()
-        print(state_tuple)
-        print()
-        print() """
+        
         # Run a single GRU step.
         gru_outputs, state_tuple = gru_cell(
             inputs=tf.squeeze(self.seq_embeddings, axis=[1]),
