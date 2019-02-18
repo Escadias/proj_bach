@@ -244,7 +244,7 @@ class ShowAndTellModel(object):
     # RNN cell
     rnn_cell = tf.contrib.rnn.BasicRNNCell(
       num_units=self.config.num_rnn_units,
-      activation='sigmoid')
+      activation=tf.nn.sigmoid)
     if self.mode == "train":
       rnn_cell = tf.contrib.rnn.DropoutWrapper(
           rnn_cell,
